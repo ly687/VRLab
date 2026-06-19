@@ -1,0 +1,204 @@
+.saturn-shell {
+  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
+  background: #02040a;
+}
+
+.saturn-game {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 48% 48%, rgba(206, 176, 116, 0.08), transparent 32%),
+    radial-gradient(circle at 80% 18%, rgba(90, 140, 255, 0.08), transparent 28%),
+    linear-gradient(135deg, #060912 0%, #02040a 62%, #010205 100%);
+}
+
+.saturn-topbar {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 28px 36px;
+  pointer-events: none;
+}
+
+.saturn-topbar > div,
+.saturn-topbar .topbar-actions {
+  pointer-events: auto;
+}
+
+.saturn-topbar h1 {
+  margin: 6px 0 0;
+  font-size: clamp(34px, 5vw, 68px);
+  line-height: 1;
+  text-shadow:
+    0 0 20px rgba(245, 199, 107, 0.2),
+    0 6px 28px rgba(0, 0, 0, 0.5);
+}
+
+.saturn-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.saturn-webgl-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.saturn-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 34%, rgba(0, 0, 0, 0.34)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.42));
+}
+
+.saturn-badge {
+  top: 142px;
+  left: 36px;
+  border-color: rgba(245, 199, 107, 0.26);
+  border-radius: 4px;
+  color: rgba(255, 238, 196, 0.78);
+  background: rgba(16, 12, 8, 0.42);
+}
+
+.saturn-game .live-dot {
+  background: var(--color-amber);
+  box-shadow: 0 0 14px var(--color-amber);
+}
+
+.saturn-hud {
+  position: absolute;
+  z-index: 4;
+  top: 132px;
+  right: 36px;
+  width: min(360px, calc(100vw - 72px));
+  max-height: calc(100vh - 164px);
+  overflow: auto;
+  gap: 14px;
+  padding: 18px;
+  border-color: rgba(245, 199, 107, 0.22);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(21, 18, 14, 0.62), rgba(4, 6, 12, 0.7)),
+    rgba(3, 5, 10, 0.5);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.46),
+    inset 0 0 36px rgba(245, 199, 107, 0.045);
+  backdrop-filter: blur(16px);
+}
+
+.saturn-hud .status-row {
+  padding: 9px 0;
+  border-bottom-color: rgba(245, 199, 107, 0.1);
+}
+
+.saturn-hud .panel-heading h2,
+.saturn-hud .status-row strong,
+.saturn-hud .message-console {
+  text-shadow: 0 0 8px rgba(245, 199, 107, 0.16);
+}
+
+.saturn-hud .instruction-panel {
+  border: 1px solid rgba(245, 199, 107, 0.1);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 14px;
+}
+
+.saturn-hud .instruction-panel h3 {
+  margin-bottom: 6px;
+}
+
+.saturn-hud .instruction-panel ul {
+  margin-top: 6px;
+}
+
+.saturn-hud .instruction-panel li {
+  line-height: 1.45;
+}
+
+.saturn-hud .message-console {
+  min-height: 44px;
+  border-color: rgba(245, 199, 107, 0.22);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.32);
+  color: rgba(255, 238, 196, 0.9);
+}
+
+.saturn-game .primary-button,
+.saturn-game .secondary-button {
+  border-radius: 4px;
+}
+
+.saturn-game .primary-button {
+  background: linear-gradient(135deg, #f5c76b, #9befff);
+  box-shadow:
+    0 0 24px rgba(245, 199, 107, 0.2),
+    0 0 42px rgba(53, 216, 255, 0.08);
+}
+
+.saturn-game .secondary-button {
+  background: rgba(16, 12, 8, 0.48);
+  border-color: rgba(245, 199, 107, 0.22);
+  backdrop-filter: blur(12px);
+}
+
+@media (max-width: 980px) {
+  .saturn-topbar {
+    padding: 20px;
+  }
+
+  .saturn-badge {
+    top: 118px;
+    left: 20px;
+  }
+
+  .saturn-hud {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+    width: auto;
+    max-height: 38vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .saturn-topbar {
+    align-items: stretch;
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .saturn-topbar .topbar-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .saturn-badge {
+    display: none;
+  }
+
+  .saturn-hud {
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    max-height: 42vh;
+    padding: 16px;
+  }
+}
